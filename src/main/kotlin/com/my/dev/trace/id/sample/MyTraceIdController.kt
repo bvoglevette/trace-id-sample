@@ -18,10 +18,6 @@ class MyTraceIdController(@Autowired private val tracer: Tracer) {
 
         val traceKey = "x-b3-traceid"
 
-        // Using header + removing tracer in constructor make the test working
-        // val responseHeaders = HttpHeaders()
-        // responseHeaders.set(traceKey, headers.get(traceKey))
-
         // Using tracer the traceId is retrieved at runtime but not during test
         val responseHeaders = HttpHeaders()
         responseHeaders.set(traceKey, tracer.currentSpan()?.context()?.traceId().toString())
