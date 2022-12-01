@@ -14,7 +14,7 @@ class MyTraceIdController(@Autowired private val tracer: Tracer) {
     //curl -v -H "x-b3-spanid: 7b654659d26126f4" -H "x-b3-traceid: 63860f25be2e77dc7b654659d2612645" localhost:9080/trace
 
     @GetMapping("/trace")
-    fun info(@RequestHeader headers: Map<String, String>): ResponseEntity<String> {
+    fun info(): ResponseEntity<String> {
 
         val traceKey = "x-b3-traceid"
 
